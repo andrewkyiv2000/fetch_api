@@ -31,14 +31,20 @@ class App extends Component {
   }
 
   render() {
-    const users = this.state.users;
-    return (
-      <div className="App">
-        {users.map((item) => {
-          return <h1 key={item.id}>{item.name}</h1>;
-        })}
-      </div>
-    );
+    const { error, isLoaded, users } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div className="loading">Loading...</div>;
+    } else {
+      return (
+        <div className="App">
+          {users.map((item) => {
+            return <h1 key={item.id}>{item.name}</h1>;
+          })}
+        </div>
+      );
+    }
   }
 }
 

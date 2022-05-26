@@ -8,7 +8,7 @@ class App extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      monsters: [],
+      users: [],
     };
   }
 
@@ -18,7 +18,7 @@ class App extends Component {
       .then((result) =>
         this.setState(
           () => {
-            return { isLoaded: true, monsters: result };
+            return { isLoaded: true, users: result };
           },
           () => {
             console.log(this.state);
@@ -31,10 +31,10 @@ class App extends Component {
   }
 
   render() {
-    const monsters = this.state.monsters;
+    const users = this.state.users;
     return (
       <div className="App">
-        {monsters.map((item) => {
+        {users.map((item) => {
           return <h1 key={item.id}>{item.name}</h1>;
         })}
       </div>
